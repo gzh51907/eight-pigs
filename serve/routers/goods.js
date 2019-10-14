@@ -5,11 +5,24 @@ const { lastResult } = require('../utils');
 
 Router.route('/guide')
     .get(async (req, res) => { //查
-        let { num, pages } = req.query;
-        // console.log(num, pages);
+        let { num, pages, sort, des } = req.query;
+        // console.log(num, pages, sort, des);
         let result = null;
         try {
-            result = await mongo.find('guide', pages, num);
+            result = await mongo.find('guide', pages, num, sort, des);
+        } catch (err) {
+            result = err;
+        }
+        res.send(lastResult({ data: result }));
+    })
+
+Router.route('/comment')
+    .get(async (req, res) => { //查
+        let { num, pages, sort, des } = req.query;
+        // console.log(num, pages, sort, des);
+        let result = null;
+        try {
+            result = await mongo.find('comment', pages, num, sort, des);
         } catch (err) {
             result = err;
         }
@@ -18,10 +31,10 @@ Router.route('/guide')
 
 Router.route('/sight')
     .get(async (req, res) => { //查
-        let { num, pages } = req.query;
+        let { guideId } = req.query;
         let result = null;
         try {
-            result = await mongo.find('sight', pages, num);
+            result = await mongo.bfind('sight', { guideId: guideId - 0 });
         } catch (err) {
             result = err;
         }
@@ -30,10 +43,23 @@ Router.route('/sight')
 
 Router.route('/tour')
     .get(async (req, res) => { //查
-        let { num, pages, sort, tage, dy, xy } = req.query;
+        let { num, pages, sort, tage, des, dy, xy } = req.query;
         let result = null;
         try {
-            result = await mongo.afind('tour', pages, num, tage, sort = { price: sort - 0 }, dy, xy);
+            result = await mongo.afind('tour', pages, num, tage, sort, des, dy, xy);
+        } catch (err) {
+            result = err;
+        }
+        res.send(lastResult({ data: result }));
+    })
+
+Router.route('/xq/*')
+    .get(async (req, res) => { //查
+        let { id, coll, tage } = req.query;
+        // console.log(id, coll, tage)
+        let result = null;
+        try {
+            result = await mongo.cfind(coll, id, tage);
         } catch (err) {
             result = err;
         }
