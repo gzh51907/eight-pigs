@@ -2,6 +2,7 @@ import vueRouter from "vue-router";
 import Vue from "vue";
 import Home from "../pages/Home.vue";
 import XQ from "../pages/XQ.vue";
+import XQ2 from "../pages/XQ2.vue";
 import List from "../pages/List.vue";
 import List2 from "../pages/List2.vue";
 Vue.use(vueRouter);
@@ -17,8 +18,13 @@ let router = new vueRouter({
     },
     {
         name: 'xq',
-        path: '/xq/:id',// 动态路由
+        path: '/xq',// 动态路由
         component: XQ
+    },
+    {
+        name: 'xq2',
+        path: '/xq2',// 动态路由
+        component: XQ2
     },
     {
         name: "list",

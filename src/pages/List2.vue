@@ -116,7 +116,7 @@ export default {
           xy: this.xy
         }
       });
-      window.console.log(data.data);
+      // window.console.log(data.data);
       // data.data.imgurl = require(data.data.imgurl);
       data.data.forEach(item => {
         item.imgurl = item.imgurl.replace("../", "");
@@ -134,7 +134,7 @@ export default {
         document.documentElement.scrollTop ||
         document.body.scrollTop;
       var offsetTop = 0;
-      this.$refs.scoele.map((item, index) => {
+      this.$refs.scoele.forEach((item, index) => {
         if (index === this.$refs.scoele.length - 1) {
           offsetTop = this.$refs.scoele[index].offsetTop;
         }
@@ -212,8 +212,8 @@ export default {
     },
     goto(id) {
       this.$router.push({
-        name: "xq",
-        params: { id, tage: this.tage, coll: "tour" }
+        path: "/xq",
+        query: { id, tage: this.tage, coll: "tour" }
       });
     }
   }
@@ -258,6 +258,7 @@ export default {
 .con-list .con-main .left .el-icon-star-on {
   width: 0.4rem;
   height: 0.4rem;
+  font-size: 0.4rem;
   color: #ffc70f;
 }
 .con-list .con-main .left .comment {
