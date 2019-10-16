@@ -1,6 +1,6 @@
 <template>
   <div class="GoodsListItem" @click="itemClick('/detail/',goodsItem.iid)">
-    <img :src="goodsItem.img || goodsItem.image || goodsItem.show.img"/>
+    <img :src="goodsItem.img || goodsItem.image || goodsItem.show.img" />
     <div class="goods-info">
       <p>{{goodsItem.title}}</p>
       <span class="price">¥{{goodsItem.price}}</span>
@@ -23,7 +23,7 @@ export default {
   methods: {
     itemClick(path, iid) {
       this.$router.push(path + iid);
-    },
+    }
   }
 };
 </script>
@@ -70,6 +70,6 @@ export default {
   top: -1px;
   width: 14px;
   height: 14px;
-  background: url("~assets/img/common/collect.svg") 0 0/14px 14px;
+  /* background: url("~assets/img/common/collect.svg") 0 0/14px 14px; */
 }
 </style>
