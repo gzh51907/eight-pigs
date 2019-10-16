@@ -2,13 +2,18 @@
   <div class="tour-man">
     <div class="tour-man-top">
       <h3 class="title">优质达人</h3>
-      <span class="tour-man-more">
+      <span class="tour-man-more" @click="gotolist('当地向导')">
         更多
         <i class="el-icon-arrow-right" style="padding-left:8px;"></i>
       </span>
     </div>
     <div class="tour-man-info">
-      <div class="tour-man-item" v-for="item in TourMan" :key="item._id">
+      <div
+        class="tour-man-item"
+        v-for="item in TourMan"
+        :key="item._id"
+        @click="gotoxq(item._id)"
+      >
         <img :src="getUrl(item.imgurl)" />
         <p class="user">{{item.human}}</p>
         <span class="text">{{item.guide}}</span>
@@ -35,6 +40,12 @@ export default {
     getUrl(url) {
       let baseurl = url.replace("../assets/", "");
       return require("assets/" + baseurl);
+    },
+    gotolist(id) {
+      this.$emit("gotolist", id);
+    },
+    gotoxq(id) {
+      this.$emit("gotoxq", id);
     }
   },
   components: {}

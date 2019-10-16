@@ -1,19 +1,19 @@
 <template>
   <div class="home-tips">
     <use-tools class="boxtips">
-      <use-tools-item>
+      <use-tools-item @click.native="gotolist('当地向导')">
         <span slot="box">
           <img src="~assets/imgs/home/logo_cat_car.webp" alt="">
         </span>
         <span slot="text">特色达人</span>
       </use-tools-item>
-      <use-tools-item>
+      <use-tools-item @click.native="gotolist('机场接送')">
         <span slot="box">
           <img src="~assets/imgs/home/logo_cat_guide.webp" alt="">
         </span>
         <span slot="text">机场接送</span>
       </use-tools-item>
-      <use-tools-item>
+      <use-tools-item @click.native="gotolist('一日游')">
         <span slot="box">
           <img src="~assets/imgs/home/logo_cat_plan.webp" alt="">
         </span>
@@ -46,6 +46,11 @@ export default {
   components: {
     UseTools,
     UseToolsItem
+  },
+  methods:{
+    gotolist(id){
+      this.$emit("gotolist", id);
+    }
   }
 };
 </script>
