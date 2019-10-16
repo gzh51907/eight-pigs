@@ -69,6 +69,12 @@ export default {
 .view-top {
   margin-bottom: 5px;
 }
+
+.view-top .title{
+  font-size: 20px;
+  font-weight: 900;
+  color: #333;
+}
 .view-item .title {
   display: inline-block;
   padding: 10px 20px 10px 0px;

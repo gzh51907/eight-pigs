@@ -1,9 +1,9 @@
 import { get } from 'network'
-export async function discoverSign() {
+export async function discoverSign(pages,num=7) {
     return await get('goods/comment',{
         params: {
-            pages: 0,
-            num: 7,
+            pages,
+            num
         }
     });
 }

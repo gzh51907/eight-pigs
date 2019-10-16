@@ -87,4 +87,9 @@ export default {
   white-space: pre-wrap;
   color: #333;
 }
+.title{
+  font-size: 20px;
+  font-weight: 900;
+  color: #333;
+}
 </style>
