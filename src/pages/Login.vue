@@ -67,7 +67,6 @@ export default {
       this.$refs.regForm.validate(async valid => {
         if (valid) {
           let { age, passs, mdl } = this.ruleForm;
-
           let { data } = await this.$axios.post(
             "http://10.3.133.73:1907/users/login",
             {
@@ -76,15 +75,12 @@ export default {
               mdl
             }
           );
-     
-          // this.$router.replace('/mine')
           if (data.code === 1) {
             let { targetUrl } = this.$route.query;
             this.$router.replace({
               path: targetUrl || "/mine"
             });
-            // 把token写入localstorage
-            localStorage.setItem("Authorization", data.data);
+            localStorage.setItem("user", data.data);
           } else {
             alert("用户名或密码不正确");
           }

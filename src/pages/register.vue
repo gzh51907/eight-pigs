@@ -163,6 +163,8 @@ export default {
           age
         }
       });
+
+      console.log(result);
     },
     prev() {
       this.$router.go(-1);
