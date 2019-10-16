@@ -11,6 +11,9 @@ import Login from "../pages/Login"
 import Register from "../pages/register.vue"
 import Custom from '../pages/Custom.vue'
 import Indent from '../pages/Indent.vue'
+import {
+    nextTick
+} from 'q';
 //配置路由
 let router = new VueRouter({
     routes: [
@@ -44,9 +47,26 @@ let router = new VueRouter({
             component: Custom
         }, {
             path: "/indent",
-            component: Indent
+            component: Indent,
+            meta: {
+                requiresAuth: true
+            }
+
         }
     ]
+})
+
+//全局路守卫
+router.beforeEach(async function (to, from, next) {
+
+    if()[]
+    let Authorization = localStorage.getItem('Authorization')
+    if (Authorization) {
+        next()
+    } else {
+
+    }
+
 })
 
 // 导出
