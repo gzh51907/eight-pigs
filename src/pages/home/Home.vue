@@ -3,8 +3,8 @@
     <home-nav-bar />
     <div class="content">
       <home-swiper />
-      <home-tips />
-      <tour-man :tour-man="TourMan" />
+      <home-tips @gotolist="gotolist" />
+      <tour-man :tour-man="TourMan" @gotoxq="gotoxq" @gotolist="gotolist" />
       <home-view :title="title" @getguide="getguide" :tour-view="TourView" />
       <home-recommand />
       <home-footer />
@@ -80,6 +80,16 @@ export default {
       homeView(guideId).then(({ data }) => {
         this.TourView = data;
       });
+    },
+    gotolist(id) {
+      if (id == "当地向导") {
+        this.$router.push({ name: "list" });
+      } else {
+        this.$router.push({ name: "list2", params: { id } });
+      }
+    },
+    gotoxq(id) {
+      this.$router.push({ path: "/xq2", query: { id, coll: "guide" } });
     }
   }
 };
