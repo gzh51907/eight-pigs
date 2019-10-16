@@ -45,7 +45,6 @@ export default {
       this.$emit("gotolist", id);
     },
     gotoxq(id) {
-      console.log(666)
       this.$emit("gotoxq", id);
     }
   },

@@ -4,6 +4,7 @@ const { lastResult, token } = require('../utils');
 
 const goodsRouter = require('./goods');
 const usersRouter = require('./users');
+const cartRouter = require('./cart');
 
 Router.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -21,6 +22,7 @@ Router.use(express.urlencoded({ extended: true }), express.json());//推导：�
 
 Router.use('/goods', goodsRouter);
 Router.use('/users', usersRouter);
+Router.use('/cart', cartRouter);
 Router.get('/verify', (req, res) => {
     let Authorization = req.get('Authorization');
     let result = token.verify(Authorization);
