@@ -38,7 +38,7 @@ Router.get('/verify', (req, res) => {
         "TemplateParam": `{\`code\`:\`4623\`}`
     }
     var requestOption = {
-        method: 'get'
+        method: 'get',
     };
     client.request('SendSms', params, requestOption).then((result) => {
         res.send(JSON.stringify(result))

@@ -1,13 +1,13 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
+
+import indent from "./Indent"
+
 Vue.use(Vuex)
-// import cart from './cart'
-// import common from './common'
-const store=new Vuex.Store({
-    modules:{
-        // cart,
-        // common
+const Store = new Vuex.Store({
+    modules: {
+        indent
     }
 })
 
-export default store
+export default Store;

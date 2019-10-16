@@ -8,10 +8,11 @@ import XQ from "pages/XQ.vue";
 import XQ2 from "../pages/XQ2.vue";
 import List from "pages/List.vue";
 import List2 from "pages/List2.vue";
+import Login from "pages/Login"
+import Register from "pages/register.vue"
+import Custom from 'pages/Custom.vue'
 
-
-const routes = [
-    {
+const routes = [{
         path: '',
         redirect: '/home'
     },
@@ -27,6 +28,9 @@ const routes = [
         name: 'info',
         path: '/info',
         component: Info,
+        meta: {
+            requiresAuth: true
+        }
     }, {
         name: 'mine',
         path: '/mine',
@@ -35,11 +39,11 @@ const routes = [
         name: 'detail',
         path: '/detail/:iid',
         component: Detail,
-    },{
+    }, {
         name: 'xq',
         path: '/xq',
         component: XQ
-    },{
+    }, {
         name: 'xq2',
         path: '/xq2',
         component: XQ2
@@ -51,8 +55,17 @@ const routes = [
     },
     {
         name: "list2",
-        path: '/list2/:id',// 动态路由
+        path: '/list2/:id', // 动态路由
         component: List2
+    }, {
+        path: "/login",
+        component: Login
+    }, {
+        path: "/register",
+        component: Register
+    }, {
+        path: "/custom",
+        component: Custom
     }
 ];
 
