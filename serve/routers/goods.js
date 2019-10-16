@@ -66,4 +66,17 @@ Router.route('/xq/*')
         res.send(lastResult({ data: result }));
     })
 
+Router.route('/other')
+    .get(async (req, res) => { //查
+        let { nickname } = req.query;
+        // console.log(id)
+        let result = null;
+        try {
+            result = await mongo.dfind('tour', {nickname});
+        } catch (err) {
+            result = err;
+        }
+        res.send(lastResult({ data: result }));
+    })
+
 module.exports = Router;

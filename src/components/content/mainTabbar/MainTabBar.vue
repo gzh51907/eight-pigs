@@ -13,7 +13,7 @@
     <tab-bar-item path="/info">
       <img slot="item-icon" src="~assets/imgs/tabbar/cart.svg" alt />
       <img slot="item-icon-active" src="~assets/imgs/tabbar/cart_active.svg" alt />
-      <div slot="item-text">消息</div>
+      <div slot="item-text">订单</div>
     </tab-bar-item>
     <tab-bar-item path="/mine">
       <img slot="item-icon" src="~assets/imgs/tabbar/profile.svg" alt />

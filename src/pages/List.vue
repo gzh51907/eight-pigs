@@ -34,7 +34,10 @@
         ref="scoele"
         @click="goto(item._id)"
       >
-        <img :src="item.imgurl" alt />
+        <el-image
+          :src="item.imgurl"
+          style="background-color: #f6f7f8;width: 2.933333rem;height: 2.933333rem;margin-right: 0.266667rem;"
+        ></el-image>
         <div class="con-right">
           <div class="con-title">
             <h2>{{item.human}}</h2>
@@ -127,7 +130,7 @@ export default {
         document.documentElement.scrollTop ||
         document.body.scrollTop;
       var offsetTop = 0;
-      this.$refs.scoele.map((item, index) => {
+      this.$refs.scoele.forEach((item, index) => {
         if (index === this.$refs.scoele.length - 1) {
           offsetTop = this.$refs.scoele[index].offsetTop;
         }
@@ -170,7 +173,7 @@ export default {
       this.$router.push({ name: "list2", params: { id } });
     },
     goto(id) {
-      this.$router.push({ name: "xq", params: { id, coll: "guide" } });
+      this.$router.push({ path: "/xq2", query: { id, coll: "guide" } });
     },
     selectord(val) {
       this.pages = 0;

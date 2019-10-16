@@ -7,12 +7,12 @@
     </div>
     <div class="nav-bar-center">
       <div class="search">
-          <!-- <span class="go">想去哪儿？</span> -->
+        <!-- <span class="go">想去哪儿？</span> -->
       </div>
     </div>
     <div class="nav-bar-right">
       <div class="text">
-        <span>登陆</span>
+        <span @click="goto('/login')">登陆</span>
         <span>/</span>
         <span>注册</span>
       </div>
@@ -21,10 +21,16 @@
 </template>
 
 <script>
+import { log } from "util";
 export default {
   name: "HomeNavBar",
   data() {
     return {};
+  },
+  methods: {
+    goto(id) {
+      this.$router.push(id);
+    }
   },
   components: {}
 };
@@ -37,7 +43,6 @@ export default {
   height: 44px;
   line-height: 44px;
   font-size: 12px;
-  
 }
 .nav-bar-logo,
 .nav-bar-right {
