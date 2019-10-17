@@ -122,7 +122,12 @@ export default {
         item.guide = item.guide.split(",");
       });
       this.listdata = data.data;
-      // window.console.log(this.listdata);
+      // window.console.log(data.data);
+      if (data.data.length < 20) {
+        this.$refs.last.innerHTML = "没有更多了~";
+      } else {
+        this.$refs.last.innerHTML = "正在加载中...";
+      }
     },
     async handleScroll() {
       var scrollTop =
@@ -162,6 +167,8 @@ export default {
           });
           if (data.data.length === 0) {
             this.$refs.last.innerHTML = "没有更多了~";
+          } else {
+            this.$refs.last.innerHTML = "正在加载中...";
           }
         }, 1000);
       }

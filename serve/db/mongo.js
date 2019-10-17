@@ -199,7 +199,7 @@ async function cfind(colName, id, tage) {
 async function dfind(colName, query = {}) {
     let { db, client } = await connect();
     let col = db.collection(colName);
-    console.log(colName, query);
+    // console.log(colName, query);
 
     // 查询数据库
     let result = await col.find(query).toArray();

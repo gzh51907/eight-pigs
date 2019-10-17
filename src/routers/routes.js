@@ -13,60 +13,61 @@ import Register from "pages/register.vue"
 import Custom from 'pages/Custom.vue'
 
 const routes = [{
-        path: '',
-        redirect: '/home'
-    },
-    {
-        name: 'home',
-        path: '/home',
-        component: Home,
-    }, {
-        name: 'discover',
-        path: '/discover',
-        component: Discover,
-    }, {
-        name: 'info',
-        path: '/info',
-        component: Info,
-        meta: {
-            requiresAuth: true
-        }
-    }, {
-        name: 'mine',
-        path: '/mine',
-        component: Mine,
-    }, {
-        name: 'detail',
-        path: '/detail/:iid',
-        component: Detail,
-    }, {
-        name: 'xq',
-        path: '/xq',
-        component: XQ
-    }, {
-        name: 'xq2',
-        path: '/xq2',
-        component: XQ2
-    },
-    {
-        name: "list",
-        path: '/list',
-        component: List
-    },
-    {
-        name: "list2",
-        path: '/list2/:id', // 动态路由
-        component: List2
-    }, {
-        path: "/login",
-        component: Login,   
-    }, {
-        path: "/register",
-        component: Register
-    }, {
-        path: "/custom",
-        component: Custom
+    path: '',
+    redirect: '/home'
+},
+{
+    name: 'home',
+    path: '/home',
+    component: Home,
+}, {
+    name: 'discover',
+    path: '/discover',
+    component: Discover,
+}, {
+    name: 'info',
+    path: '/info',
+    component: Info,
+    meta: {
+        requiresAuth: true
     }
+}, {
+    name: 'mine',
+    path: '/mine',
+    component: Mine,
+}, {
+    name: 'detail',
+    path: '/detail/:iid',
+    component: Detail,
+}, {
+    name: 'xq',
+    path: '/xq',
+    component: XQ
+}, {
+    name: 'xq2',
+    path: '/xq2',
+    component: XQ2
+},
+{
+    name: "list",
+    path: '/list',
+    component: List
+},
+{
+    name: "list2",
+    path: '/list2/:id', // 动态路由
+    component: List2
+}, {
+    name: 'login',
+    path: "/login",
+    component: Login,
+}, {
+    path: "/register",
+    component: Register
+}, {
+    path: "/custom",
+    component: Custom
+}
 ];
 
 export default routes

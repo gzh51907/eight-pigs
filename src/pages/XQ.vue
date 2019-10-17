@@ -334,10 +334,72 @@ export default {
   },
   methods: {
     async putin() {
-      let { data } = await this.$axios.post("http://localhost:1907/cart/", {
-        query: this.datalist
+      let user = localStorage.getItem("user");
+      if (user) {
+        let { data } = await this.$axios.get("http://localhost:1907/cart/", {
+          params: {
+            _id: this.datalist._id
+          }
+        });
+        // window.console.log(data);
+        if (data.data.length === 0) {
+          let { data: data2 } = await this.$axios.post(
+            "http://localhost:1907/cart/",
+            {
+              query: this.datalist
+            }
+          );
+          // window.console.log(data2);
+          if (data2.code === 1) {
+            this.open2();
+          }
+        } else {
+          this.open();
+        }
+      } else {
+        this.open3();
+      }
+    },
+    open3() {
+      this.$message({
+        showClose: true,
+        message: "请先登录哦~",
+        type: "warning",
+        duration: 600
       });
-      window.console.log(data);
+      this.$router.push({
+        name: "login",
+        query: {
+          targetUrl: `/xq?id=${this.datalist._id}&tage=${this.datalist.tage}&coll=tour`
+        }
+      });
+    },
+    open2() {
+      this.$confirm("添加订单成功~", "提示", {
+        confirmButtonText: "跳去订单页",
+        cancelButtonText: "留在本页",
+        type: "warning"
+      })
+        .then(() => {
+          this.$router.push({
+            name: "info"
+          });
+        })
+        .catch(() => {});
+    },
+    open() {
+      this.$confirm("已经在订单中了哦~", "提示", {
+        confirmButtonText: "跳去列表页",
+        cancelButtonText: "留在本页",
+        type: "warning"
+      })
+        .then(() => {
+          this.$router.push({
+            name: "list2",
+            params: { id: this.datalist.tage }
+          });
+        })
+        .catch(() => {});
     },
     async getdata(id, coll, tage) {
       let { data } = await this.$axios.get("http://localhost:1907/goods/xq/", {
