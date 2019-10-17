@@ -70,7 +70,11 @@ export default {
     this.getHomeTourMan();
     this.getguide(655762);
   },
+
   methods: {
+    currentUser() {
+      let srue = this.$store.state.ccommit.user;
+    },
     getHomeTourMan() {
       homeTourMan().then(({ data }) => {
         this.TourMan = data;

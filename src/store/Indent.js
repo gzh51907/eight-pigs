@@ -1,7 +1,7 @@
-// import axios from 'axios'
-// import {
-//     Message
-// } from 'element-ui'
+import axios from 'axios'
+import {
+    Message
+} from 'element-ui'
 
 let indent = {
     state: {
@@ -53,7 +53,6 @@ let indent = {
             id,
             qty
         }) {
-            console.log('changeQty:', id, qty)
             state.indentlist.forEach(item => {
                 if (item.id === id) {
                     item.qty = qty;

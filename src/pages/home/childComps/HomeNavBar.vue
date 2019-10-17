@@ -12,9 +12,12 @@
     </div>
     <div class="nav-bar-right">
       <div class="text">
-        <span @click="goto('/login')">登陆</span>
-        <span>/</span>
-        <span>注册</span>
+        <template v-if="!currentUser">
+          <span @click="goto('/login')">登陆</span>
+          <span>/</span>
+          <span @click="goto('/register')">注册</span>
+        </template>
+        <span @click="logout" v-else>退出</span>
       </div>
     </div>
   </div>
@@ -25,14 +28,25 @@ import { log } from "util";
 export default {
   name: "HomeNavBar",
   data() {
-    return {};
+    return {
+      currentUser: localStorage.getItem("user")
+    };
   },
   methods: {
     goto(id) {
       this.$router.push(id);
+    },
+    logout() {
+      this.$store.commit("logout");
+      this.currentUser = localStorage.getItem("user");
     }
-  },
-  components: {}
+  }
+  // computed: {
+  //   currentUser() {
+  //     // return localStorage.getItem("user");
+  //     console.log(this.$store.state.user);
+  //   }
+  // }
 };
 </script>
 <style scoped>

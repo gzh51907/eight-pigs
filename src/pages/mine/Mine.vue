@@ -10,7 +10,7 @@
                   src="https://pic.8pig.com/avatar/default/no_login_avatar.jpg@112w_112h__1e_1c.webp"
                 />
               </el-avatar>
-              <div type="text" class="logincol">点击登录</div>
+              <div type="text" class="logincol"  >点击登录</div>
             </div>
           </div>
         </el-col>

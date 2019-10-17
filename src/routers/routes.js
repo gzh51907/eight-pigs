@@ -59,7 +59,7 @@ const routes = [{
         component: List2
     }, {
         path: "/login",
-        component: Login
+        component: Login,   
     }, {
         path: "/register",
         component: Register
