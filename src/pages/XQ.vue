@@ -334,10 +334,37 @@ export default {
   },
   methods: {
     async putin() {
-      let { data } = await this.$axios.post("http://localhost:1907/cart/", {
-        query: this.datalist
+      let { data } = await this.$axios.get("http://localhost:1907/cart/", {
+        params: {
+          _id: this.datalist._id
+        }
       });
-      window.console.log(data);
+      // window.console.log(data);
+      if (data.data.length === 0) {
+        let { data: data2 } = await this.$axios.post(
+          "http://localhost:1907/cart/",
+          {
+            query: this.datalist
+          }
+        );
+        window.console.log(data2);
+      } else {
+        this.open();
+      }
+    },
+    open() {
+      this.$confirm("已经在订单中了哦~", "提示", {
+        confirmButtonText: "跳去列表页",
+        cancelButtonText: "留在本页",
+        type: "warning"
+      })
+        .then(() => {
+          this.$router.push({
+            name: "list2",
+            params: { id: this.datalist.tage }
+          });
+        })
+        .catch(() => {});
     },
     async getdata(id, coll, tage) {
       let { data } = await this.$axios.get("http://localhost:1907/goods/xq/", {
