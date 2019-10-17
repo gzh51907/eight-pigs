@@ -1,8 +1,4 @@
 import axios from 'axios'
-import {
-    Message
-} from 'element-ui'
-
 let indent = {
     state: {
         indentlist: [{
@@ -23,21 +19,8 @@ let indent = {
             imgurl: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1570536784660&di=d4471f6edf73cace7d98fb05869a9277&imgtype=0&src=http%3A%2F%2Fimg13.360buyimg.com%2Fn1%2Fs450x450_jfs%2Ft28117%2F273%2F1288839750%2F66834%2F8ef15c40%2F5cdd22b8Nbc711aba.jpg",
             price: 3999,
             qty: 1
-        }]
-    },
-    getters: {
-        cartlength(state) {
-            return state.cartlist.length;
-        },
-        totalPrice(state) {
-            return state.cartlist.reduce((prev, item) => prev + item.price * item.qty, 0)
-        },
-        saleGoods(state) {
-            return state.cartlist.map(item => {
-                item.price *= 0.5;
-                return item;
-            })
-        }
+        }],
+        data: []
     },
     mutations: {
         add2cart(state, goods) {
@@ -58,8 +41,17 @@ let indent = {
                     item.qty = qty;
                 }
             })
-        }
+        },
     },
-}
+    actions: {
+        async ahld(state) {
+            let {
+                data
+            } = await axios.get('http://10.3.133.73:1907/cart') 
+            state.data = data
+            console.log(state.data);
+        },
+    }
 
+}
 export default indent

@@ -23,6 +23,7 @@
   </div>
 </template>
 <script>
+import { runMain } from "module";
 export default {
   data() {
     return {};
@@ -30,6 +31,10 @@ export default {
   computed: {
     indentlist() {
       return this.$store.state.indent.indentlist;
+    },
+    list() {
+      // // this.$store.state.indent.data;
+      // // return datalist;
     }
   },
   methods: {
@@ -39,6 +44,10 @@ export default {
     clearindent() {
       this.$store.commit("clearindent");
     }
+  },
+  created() {
+    this.$store.dispatch("ahld");
+    console.log(this.$store.state);
   }
 };
 </script>

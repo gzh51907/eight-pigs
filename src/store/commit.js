@@ -17,9 +17,6 @@ export default {
                 age,
                 Authorization
             }))
-
-
-
         },
         logout(state) {
             state.user = null;
