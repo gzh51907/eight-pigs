@@ -28,10 +28,13 @@ Router.route('/:_id')
 Router.route('/')
     .get(async (req, res) => { //查
         let { _id } = req.query;
-        console.log(_id)
         let result = null;
         try {
-            result = await mongo.dfind('cart', { _id });
+            if (_id) {
+                result = await mongo.dfind('cart', { _id });
+            } else {
+                result = await mongo.dfind('cart');
+            }
         } catch (err) {
             result = err;
         }

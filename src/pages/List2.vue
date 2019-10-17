@@ -128,6 +128,11 @@ export default {
       });
       this.listdata = data.data;
       // window.console.log(this.listdata);
+      if (data.data.length < 20) {
+        this.$refs.last.innerHTML = "没有更多了~";
+      } else {
+        this.$refs.last.innerHTML = "正在加载中...";
+      }
     },
     async handleScroll() {
       var scrollTop =
@@ -170,6 +175,8 @@ export default {
           });
           if (data.data.length === 0) {
             this.$refs.last.innerHTML = "没有更多了~";
+          } else {
+            this.$refs.last.innerHTML = "正在加载中...";
           }
           // window.console.log(this.listdata);
         }, 1000);
