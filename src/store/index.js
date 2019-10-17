@@ -1,13 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
+import ccommit from "./commit"
 import indent from "./Indent"
 
 Vue.use(Vuex)
-const Store = new Vuex.Store({
+const store = new Vuex.Store({
     modules: {
-        indent
+        indent,
+        ccommit
     }
 })
 
-export default Store;
+export default store;

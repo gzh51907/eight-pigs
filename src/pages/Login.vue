@@ -46,6 +46,7 @@
 </template>
 <script>
 import { async } from "q";
+import { log } from "util";
 export default {
   data() {
     return {
@@ -77,10 +78,10 @@ export default {
           );
           if (data.code === 1) {
             let { targetUrl } = this.$route.query;
-            this.$router.replace({
-              path: targetUrl || "/mine"
+            this.$store.commit("login", { age, Authorization: data.data });
+            this.$router.push({
+              path: targetUrl || "/home"
             });
-            localStorage.setItem("user", data.data);
           } else {
             alert("用户名或密码不正确");
           }
