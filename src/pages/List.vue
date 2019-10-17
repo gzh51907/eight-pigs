@@ -74,6 +74,7 @@
           >{{ key }}</el-tag>
         </div>
       </div>
+      <div ref="last" style="font-size:20px;">正在加载中...</div>
     </section>
   </div>
 </template>
@@ -113,7 +114,6 @@ export default {
           }
         }
       );
-      window.console.log(data.data);
       // data.data.imgurl = require(data.data.imgurl);
       data.data.forEach(item => {
         item.imgurl = item.imgurl.replace("../", "");
@@ -122,7 +122,7 @@ export default {
         item.guide = item.guide.split(",");
       });
       this.listdata = data.data;
-      window.console.log(this.listdata);
+      // window.console.log(this.listdata);
     },
     async handleScroll() {
       var scrollTop =
@@ -151,6 +151,7 @@ export default {
               }
             }
           );
+          // window.console.log(data.data);
           // data.data.imgurl = require(data.data.imgurl);
           data.data.forEach(item => {
             item.imgurl = item.imgurl.replace("../", "");
@@ -159,7 +160,9 @@ export default {
             item.guide = item.guide.split(",");
             this.listdata.push(item);
           });
-          window.console.log(this.listdata);
+          if (data.data.length === 0) {
+            this.$refs.last.innerHTML = "没有更多了~";
+          }
         }, 1000);
       }
     },

@@ -59,7 +59,7 @@
     <div class="space"></div>
     <div class="footer">
       <p style="border-right:1px solid #fff;">在线咨询</p>
-      <p>咨询达人</p>
+      <p @click="putin">添加订单</p>
     </div>
     <el-menu
       v-if="this.switch"
@@ -333,6 +333,12 @@ export default {
     window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
+    async putin() {
+      let { data } = await this.$axios.post("http://localhost:1907/cart/", {
+        query: this.datalist
+      });
+      window.console.log(data);
+    },
     async getdata(id, coll, tage) {
       let { data } = await this.$axios.get("http://localhost:1907/goods/xq/", {
         params: {
@@ -374,9 +380,9 @@ export default {
       }
       if (scrollTop >= this.ykpj - 120) {
         this.activeIndex = "3";
-      } else if (scrollTop >= this.ydxx - 100) {
+      } else if (scrollTop >= this.ydxx - 110) {
         this.activeIndex = "2";
-      } else if (scrollTop >= this.xcjs - 100) {
+      } else if (scrollTop >= this.xcjs - 110) {
         this.activeIndex = "1";
       }
     },
@@ -384,9 +390,9 @@ export default {
       if (key == 1) {
         window.scrollTo(0, this.xcjs - 88);
       } else if (key == 2) {
-        window.scrollTo(0, this.ydxx - 88);
+        window.scrollTo(0, this.ydxx - 100);
       } else if (key == 3) {
-        window.scrollTo(0, this.ykpj - 108);
+        window.scrollTo(0, this.ykpj - 100);
       }
     },
     async getdata2(nickname, id) {
@@ -398,7 +404,7 @@ export default {
           }
         }
       );
-      // window.console.log(data.data);
+      window.console.log(data.data);
       data.data.forEach((item, index) => {
         item.imgurl = item.imgurl.replace("../", "");
         item.imgurl = require("../" + item.imgurl);

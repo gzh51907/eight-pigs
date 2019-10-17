@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import "../public/rem"
 import MainTabBar from "components/content/mainTabbar/MainTabBar";
 
 export default {

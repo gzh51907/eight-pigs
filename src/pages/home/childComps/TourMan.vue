@@ -45,7 +45,6 @@ export default {
       this.$emit("gotolist", id);
     },
     gotoxq(id) {
-      console.log(666)
       this.$emit("gotoxq", id);
     }
   },
@@ -97,6 +96,11 @@ export default {
   overflow: hidden;
   display: inline-block;
   white-space: pre-wrap;
+  color: #333;
+}
+.title{
+  font-size: 20px;
+  font-weight: 900;
   color: #333;
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div id="discover">
     <discover-nav @discoverNav="discoverNav" />
+
     <div class="content" v-if="currentNav==0">
       <discover-video />
       <discover-visitor />
@@ -8,12 +9,20 @@
       <discover-fresh />
     </div>
     <div v-else>
-      <scroll class="content">
-        <div class="global">
-          <h3 class="title">达人动态</h3>
-          <discover-global :global="global"></discover-global>
-        </div>
-      </scroll>
+      <keep-alive>
+        <scroll
+          class="content"
+          ref="scroll"
+          :probe-type="3"
+          :pull-up-load="true"
+          @pullingUp="loadMore"
+        >
+          <div class="global">
+            <h3 class="title">达人动态</h3>
+            <discover-global :global="global.list" />
+          </div>
+        </scroll>
+      </keep-alive>
     </div>
   </div>
 </template>
@@ -33,11 +42,43 @@ export default {
   data() {
     return {
       currentNav: 0,
-      global: []
+      global: {
+        pages: 0,
+        list: []
+      },
+      saveY: 0
     };
   },
+  methods: {
+    getDiscoverSign(pages) {
+      discoverSign(pages).then(({ data }) => {
+        this.global.list.push(...data);
+      });
+    },
+    discoverNav(index) {
+      this.currentNav = index;
+    },
+    loadMore() {
+      let pages = this.global.pages + 1;
+      discoverSign(pages).then(({ data }) => {
+        this.global.list.push(...data);
+        // 完成下拉加载更多
+        this.global.pages += 1;
+        this.$refs.scroll.finishPullUp();
+      });
+    }
+  },
   created() {
-    this.getDiscoverSign();
+    this.getDiscoverSign(this.global.pages);  
+  },
+  activated() {
+    console.log('activated');
+    // this.$refs.scroll.scrollTo(0, this.saveY, 0);
+  },
+  deactivated() {
+    console.log('deactivated');
+    // this.saveY = this.$refs.scroll.getScrollY();
+    console.log(this.saveY);
   },
   components: {
     Scroll,
@@ -47,16 +88,6 @@ export default {
     DiscoverTourMan,
     DiscoverFresh,
     DiscoverGlobal
-  },
-  methods: {
-    getDiscoverSign() {
-      discoverSign().then(({ data }) => {
-        this.global = data;
-      });
-    },
-    discoverNav(index) {
-      this.currentNav = index;
-    }
   }
 };
 </script>
@@ -73,12 +104,12 @@ export default {
   padding: 0px 10px;
   overflow-y: auto;
 }
-.global {
-  padding: 0px 15px;
-}
 .title {
   height: 54px;
   line-height: 54px;
   border-bottom: 1px solid #efefef;
+  font-size: 20px;
+  font-weight: 900;
+  color: #333;
 }
 </style>

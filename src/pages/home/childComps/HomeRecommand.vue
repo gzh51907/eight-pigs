@@ -1,6 +1,6 @@
 <template>
   <div class="home-recommand">
-    <h3 class="title">优质达人带你玩</h3>
+    <h3 class="title">推荐专题</h3>
     <div class="recommand-info">
       <div class="recommand-item" v-for="item in recommand" :key="item">
         <img :src="item" />
@@ -49,5 +49,10 @@ export default {
   width: 288px;
   height: 163px;
   margin-right: 8px;
+}
+.title{
+  font-size: 20px;
+  font-weight: 900;
+  color: #333;
 }
 </style>
