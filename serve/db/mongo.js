@@ -27,20 +27,21 @@ async function create(colName, data) {
     return result;
 }
 
-async function remove(colName, data) {
+async function remove(colName, _id) {
     let { db, client } = await connect();
+    console.log(_id);
     //连接集合
     let col = db.collection(colName);
-    let result = await col.deleteMany(data);
+    let result = await col.deleteMany({ _id: ObjectId(_id) });
     client.close();
     return result;
 }
 
-async function update(colName, data, newData) {
+async function update(colName, _id, newData) {
     let { db, client } = await connect();
     //连接集合
     let col = db.collection(colName);
-    let result = await col.updateMany(data, newData);
+    let result = await col.updateMany({ _id: ObjectId(_id) }, newData);
     client.close();
     return result;
 }
