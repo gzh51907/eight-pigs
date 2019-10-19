@@ -103,17 +103,14 @@ export default {
   },
   methods: {
     async getdata() {
-      let { data } = await this.$axios.get(
-        "http://localhost:1907/goods/guide",
-        {
-          params: {
-            num: 20,
-            pages: this.pages,
-            sort: this.sort,
-            des: this.des
-          }
+      let { data } = await this.$guowei.get("/goods/guide", {
+        params: {
+          num: 20,
+          pages: this.pages,
+          sort: this.sort,
+          des: this.des
         }
-      );
+      });
       // data.data.imgurl = require(data.data.imgurl);
       data.data.forEach(item => {
         item.imgurl = item.imgurl.replace("../", "");
@@ -145,17 +142,14 @@ export default {
         clearTimeout(this.timer);
         this.timer = setTimeout(async () => {
           this.pages += 1;
-          let { data } = await this.$axios.get(
-            "http://localhost:1907/goods/guide",
-            {
-              params: {
-                num: 20,
-                pages: this.pages,
-                sort: this.sort,
-                des: this.des
-              }
+          let { data } = await this.$guowei.get("/goods/guide", {
+            params: {
+              num: 20,
+              pages: this.pages,
+              sort: this.sort,
+              des: this.des
             }
-          );
+          });
           // window.console.log(data.data);
           // data.data.imgurl = require(data.data.imgurl);
           data.data.forEach(item => {

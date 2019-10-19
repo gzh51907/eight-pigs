@@ -117,7 +117,7 @@ export default {
   },
   methods: {
     async getdata(id, coll) {
-      let { data } = await this.$axios.get("http://localhost:1907/goods/xq/", {
+      let { data } = await this.$guowei.get("/goods/xq/", {
         params: {
           id: id,
           coll: coll
@@ -148,7 +148,7 @@ export default {
   width: 100%;
   font-size: 0.42667rem;
   background-color: #ff5e69;
-  opacity: .9;
+  opacity: 0.9;
   line-height: 1.2rem;
 }
 .footer p {

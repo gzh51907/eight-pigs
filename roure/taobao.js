@@ -32,11 +32,11 @@ Router.get('/verify', (req, res) => {
 
     var params = {
         "RegionId": "cn-hangzhou",
-        "PhoneNumbers": `13143686668}`,
+        "PhoneNumbers": `${age}`,
         "SignName": "八只小猪",
         "TemplateCode": "SMS_175485520",
         "TemplateParam": `{\`code\`:\`4623\`}`
-    }
+    }  
     var requestOption = {
         method: 'get',
     };
