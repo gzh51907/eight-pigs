@@ -336,15 +336,15 @@ export default {
     async putin() {
       let user = localStorage.getItem("user");
       if (user) {
-        let { data } = await this.$axios.get("http://localhost:1907/cart/", {
+        let { data } = await this.$guowei.get("/cart/", {
           params: {
             _id: this.datalist._id
           }
         });
         // window.console.log(data);
         if (data.data.length === 0) {
-          let { data: data2 } = await this.$axios.post(
-            "http://localhost:1907/cart/",
+          let { data: data2 } = await this.$guowei.post(
+            "/cart/",
             {
               query: this.datalist
             }
@@ -402,7 +402,7 @@ export default {
         .catch(() => {});
     },
     async getdata(id, coll, tage) {
-      let { data } = await this.$axios.get("http://localhost:1907/goods/xq/", {
+      let { data } = await this.$guowei.get("goods/xq/", {
         params: {
           id: id,
           coll: coll,
@@ -458,14 +458,11 @@ export default {
       }
     },
     async getdata2(nickname, id) {
-      let { data } = await this.$axios.get(
-        "http://localhost:1907/goods/other",
-        {
-          params: {
-            nickname: nickname
-          }
+      let { data } = await this.$guowei.get("/goods/other", {
+        params: {
+          nickname: nickname
         }
-      );
+      });
       window.console.log(data.data);
       data.data.forEach((item, index) => {
         item.imgurl = item.imgurl.replace("../", "");

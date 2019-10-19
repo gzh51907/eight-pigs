@@ -10,7 +10,7 @@
                   src="https://pic.8pig.com/avatar/default/no_login_avatar.jpg@112w_112h__1e_1c.webp"
                 />
               </el-avatar>
-              <div type="text" class="logincol"  >点击登录</div>
+              <div type="text" class="logincol">{{hello}}</div>
             </div>
           </div>
         </el-col>
@@ -68,12 +68,25 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      hello: "点击登录"
+    };
+  },
+  created() {
+    try {
+      let { age } = JSON.parse(localStorage.getItem("user"));
+      if (age) {
+        this.hello = age;
+      }
+    } catch (err) {
+      alert(err);
+    }
   },
   methods: {
     where(path) {
       this.$router.push(path);
-    }
+    },
+    user() {}
   }
 };
 </script>
@@ -132,7 +145,7 @@ ul li {
   }
   #userma {
     width: 100%;
-    height: 112px;
+    height: 130px;
     padding-bottom: 30px;
   }
 

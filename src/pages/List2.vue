@@ -106,7 +106,7 @@ export default {
   },
   methods: {
     async getdata() {
-      let { data } = await this.$axios.get("http://localhost:1907/goods/tour", {
+      let { data } = await this.$axios.get("http://10.3.133.73:1907/goods/tour", {
         params: {
           num: 20,
           pages: this.pages,
@@ -151,7 +151,7 @@ export default {
         this.timer = setTimeout(async () => {
           this.pages += 1;
           let { data } = await this.$axios.get(
-            "http://localhost:1907/goods/tour",
+            "http://10.3.133.73:1907/goods/tour",
             {
               params: {
                 num: 20,

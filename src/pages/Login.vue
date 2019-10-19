@@ -68,14 +68,11 @@ export default {
       this.$refs.regForm.validate(async valid => {
         if (valid) {
           let { age, passs, mdl } = this.ruleForm;
-          let { data } = await this.$axios.post(
-            "http://10.3.133.73:1907/users/login",
-            {
-              age,
-              passs,
-              mdl
-            }
-          );
+          let { data } = await this.$guowei.post("/users/login", {
+            age,
+            passs,
+            mdl
+          });
           if (data.code === 1) {
             let { targetUrl } = this.$route.query;
             this.$store.commit("login", { age, Authorization: data.data });

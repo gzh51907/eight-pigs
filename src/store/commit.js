@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 export default {
     state: {
         user: null
@@ -26,8 +25,6 @@ export default {
     actions: {
         async checkLogin(context, payload) {
             let user = localStorage.getItem("user")
-            console.log(user);
-
             if (!user) {
                 context.commit('logout');
             } else {
@@ -49,4 +46,7 @@ export default {
             return 200;
         }
     }
+
+
+
 }

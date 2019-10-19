@@ -95,16 +95,11 @@ export default {
     };
     // 检查用户名是否存在
     const checkUsername = async (rule, value, callback) => {
-      console.log(this.ruleForm.age);
-
-      let { data } = await this.$axios.get(
-        "http://10.3.133.73:1907/users/check",
-        {
-          params: {
-            age: this.ruleForm.age
-          }
+      let { data } = await this.$guowei.get("/users/check", {
+        params: {
+          age: this.ruleForm.age
         }
-      );
+      });
 
       console.log(data);
 
@@ -182,13 +177,10 @@ export default {
       this.$refs[formName].validate(async valid => {
         if (valid) {
           let { age, passs } = this.ruleForm;
-          let { data } = await this.$axios.post(
-            "http://10.3.133.73:1907/users/reg",
-            {
-              age,
-              passs
-            }
-          );
+          let { data } = await this.Sand$guowei.post("/users/reg", {
+            age,
+            passs
+          });
           if (data.code === 1) {
             this.$router.replace({
               name: "mine",
