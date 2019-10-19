@@ -79,7 +79,6 @@ export default {
         this.hello = age;
       }
     } catch (err) {
-      alert(err);
     }
   },
   methods: {
