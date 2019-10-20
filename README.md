@@ -61,6 +61,7 @@ Vue、Vue-Router、Vue-Cli、Vuex、Nodejs、ElementUI、还有express、axios�
 
 ###### 8pigs-APP/src :
 
+```
 │  App.vue
 │  main.js
 │  ww.json
@@ -173,9 +174,13 @@ Vue、Vue-Router、Vue-Cli、Vuex、Nodejs、ElementUI、还有express、axios�
         commit.js
         Indent.js
         index.js
+```
+
+
 
 ###### 8pigs-backend/src :
 
+```
 │  App.vue
 │  main.js
 │
@@ -218,3 +223,5 @@ Vue、Vue-Router、Vue-Cli、Vuex、Nodejs、ElementUI、还有express、axios�
         InfoShow.vue
         Login.vue
         Register.vue
+```
+
