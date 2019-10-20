@@ -1,4 +1,4 @@
-444444``````````````````````````````````````````````----<template>
+<template>
   <div>
     <el-menu class="el-menu-demo" mode="horizontal">
       <el-submenu index="1" style="width:25%;">
@@ -106,7 +106,7 @@ export default {
   },
   methods: {
     async getdata() {
-      let { data } = await this.$axios.get("http://10.3.133.73:1907/goods/tour", {
+      let { data } = await this.$guowei.get("/goods/tour", {
         params: {
           num: 20,
           pages: this.pages,
@@ -150,8 +150,8 @@ export default {
         clearTimeout(this.timer);
         this.timer = setTimeout(async () => {
           this.pages += 1;
-          let { data } = await this.$axios.get(
-            "http://10.3.133.73:1907/goods/tour",
+          let { data } = await this.$guowei.get(
+            "/goods/tour",
             {
               params: {
                 num: 20,

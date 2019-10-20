@@ -153,7 +153,7 @@ export default {
         }
       }, 1000);
       let { age } = this.ruleForm;
-      let { result } = await this.$axios.get("http://10.3.133.36:1907/verify", {
+      let { result } = await this.$guowei.get("/verify", {
         params: {
           age
         }
@@ -177,7 +177,7 @@ export default {
       this.$refs[formName].validate(async valid => {
         if (valid) {
           let { age, passs } = this.ruleForm;
-          let { data } = await this.Sand$guowei.post("/users/reg", {
+          let { data } = await this.$guowei.post("/users/reg", {
             age,
             passs
           });

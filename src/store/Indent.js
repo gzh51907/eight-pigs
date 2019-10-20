@@ -18,7 +18,7 @@ let indent = {
         async removeFromCart(context, id) {
             let {
                 data
-            } = await axios.delete('http://10.3.133.73:1907/cart', {
+            } = await axios.delete('http://47.98.245.185:1907/cart', {
                 params: {
                     _id: id
                 }
@@ -27,7 +27,7 @@ let indent = {
         async ahld(context) {
             let {
                 data
-            } = await axios.get('http://10.3.133.73:1907/cart')
+            } = await axios.get('http://47.98.245.185:1907/cart')
             context.commit('getData', data)
         },
     },

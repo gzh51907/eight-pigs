@@ -11,7 +11,7 @@ Vue.use(ElementUI);
 
 import axios from 'axios'
 const guowei = axios.create({
-  baseURL: 'http://10.3.133.73:1907'
+  baseURL: 'http://47.98.245.185:1907'
 })
 Vue.prototype.$guowei = guowei
 Vue.prototype.$axios = axios;
