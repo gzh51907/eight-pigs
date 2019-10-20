@@ -17,7 +17,7 @@ git@github.com:gzh51907/eight-pigs.git
 
 ## 使用技术与框架
 
-Vue、Vue-Router、Vue-Cli、Vuex、Nodejs、ElementUI、还有express、axios、multer等各种插件
+Vue、Vue-Router、Vue-Cli、Vuex、Nodejs、ElementUI、git，还有express、axios、multer等各种插件
 
 ## 项目总体框架
 
@@ -56,6 +56,32 @@ Vue、Vue-Router、Vue-Cli、Vuex、Nodejs、ElementUI、还有express、axios�
 - 实现了登录功能（包含短信验证）
 - 使用了全局路由守卫来设置权限（登录后才能访问购物车）
 - 完成了订单页的样式以及功能
+
+## 项目页面截图
+
+##### 首页：
+
+![1571549758132](./微信图片_20191020133611.png)
+
+![QQ截图20191020134750](./QQ截图20191020134750.png)
+
+##### 列表页：
+
+![QQ截图20191020134543](./QQ截图20191020134543.png)
+
+![1571549950961](./QQ截图20191020133852.png)
+
+##### 详情页：
+
+![QQ截图20191020134911](./QQ截图20191020134911.png)
+
+![QQ截图20191020135001](./QQ截图20191020135001.png)
+
+##### 我的：
+
+![QQ截图20191020135138](./QQ截图20191020135138.png)
+
+![QQ截图20191020135245](./QQ截图20191020135245.png)
 
 ## 目录结构
 
